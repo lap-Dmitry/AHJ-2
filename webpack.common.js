@@ -32,8 +32,12 @@ module.exports = {
         ],
       },
       {
-        test: /\.(jpg|png|svg|jpeg|gif)$/,
+        test: /\.(?:ico|png|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
+      },
+      {
+				test: /\.svg$/,
+				type: 'asset/resource',
       },
     ],
   },
@@ -43,7 +47,8 @@ module.exports = {
       filename: './index.html',
     }),
     new MiniCssExtractPlugin({
-      filename: './style.css',
-    }),
+			filename: '[name].css',
+			chunkFilename: '[id].css',
+		}),
   ],
 };
